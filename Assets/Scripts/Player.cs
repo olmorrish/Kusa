@@ -14,32 +14,35 @@ public class Player : MonoBehaviour {
     public PlayerState currentState;
     private Animator anim;
 
-
+    //Movement Speed
     public float initialAnimatorSpeed;
     public float powerupAnimSpeedIncrease;
-
-
-    int visualEnergyLevel;
-
-
-    public GameObject grassPatchPrefab;
-
     private Vector3 target;
     public float moveDistance; //the distance the grass will move
 
+    //Prefabs
+    public GameObject grassPatchPrefab;
+
+    //Collision Checking
     public LayerMask whatIsSolid;
     public float hitCheckSize;
+
+    //Scoring and Progress
+    public int powerLevel;
+
 
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
         anim.speed = initialAnimatorSpeed;
+        powerLevel = 0;
     }
 
     // Update is called once per frame
     void Update() {
 
         UpdateAnimator();
+        //UpdatePowerLevel(); //TODO call this on beat
         
         switch (currentState) {
 
@@ -146,8 +149,6 @@ public class Player : MonoBehaviour {
      */
     private void UpdateAnimator() {
 
-        anim.SetInteger("energyLevel", visualEnergyLevel);
-
         //TODO
         switch (currentState) {
             case PlayerState.Idle:
@@ -168,4 +169,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+
+    /* Update Power Level
+     * Increases the power level by the number of patches of grass currently onscreen.
+     */
+    private void UpdatePowerLevel() {
+        GameObject[] patches = GameObject.FindGameObjectsWithTag("Patch");
+        powerLevel += patches.Length;   //this counts the player as a patch as well btw
+    }
 }

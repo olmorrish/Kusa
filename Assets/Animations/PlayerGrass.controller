@@ -113,12 +113,6 @@ AnimatorController:
   m_Name: PlayerGrass
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: energyLevel
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: idle
     m_Type: 4
     m_DefaultFloat: 0

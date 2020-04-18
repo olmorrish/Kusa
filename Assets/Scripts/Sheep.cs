@@ -19,6 +19,10 @@ public class Sheep : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject playerReference;
 
+    private Animator topSpriteAnim;
+    public int currentPoseNum;
+    public int totalNumPoses;
+
     public GameObject manurePrefab;
     public float manureSpawnInterval;
     private float nextManureSpawnTime;
@@ -29,11 +33,14 @@ public class Sheep : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        nextManureSpawnTime = Time.time + Random.RandomRange(0, manureSpawnInterval);
+        nextManureSpawnTime = Time.time + Random.Range(0, manureSpawnInterval);
+        topSpriteAnim = gameObject.GetComponentInChildren<Animator>();
+        currentPoseNum = -1;
+        NewPose();
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag("Patch");
         int numPatches = possibleTargets.Length;
 
@@ -45,7 +52,7 @@ public class Sheep : MonoBehaviour
         possibleLocations[numPatches] = playerReference.transform.position;
 
 
-
+        //decide which direction to go based on the AI Mode
         Vector2 moveVector = Vector2.zero;
         switch (mode) {
 
@@ -89,11 +96,8 @@ public class Sheep : MonoBehaviour
                 break;
         }
 
+        //now that the decision of where to go is handled, apply the force
         rb.AddForce(moveVector.normalized * moveForce, ForceMode2D.Force);
-
-
-
-
 
         //restrict speed
         RestrictVelocity(currentMaxSpeed);
@@ -153,8 +157,8 @@ public class Sheep : MonoBehaviour
 
 
 
-    /*
-     * 
+    /* Restrict Velocity
+     * Limits the x and y velocities if they exceed a given amount
      */
     private void RestrictVelocity(float max) {
         
@@ -172,5 +176,19 @@ public class Sheep : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -max);
         }
 
+    }
+
+    /* New Pose
+     * Changes the top half of the sheep to a random new pose
+     */
+    private void NewPose() {
+        int newPoseNum = Random.Range(1,totalNumPoses + 1); 
+        
+        while (newPoseNum == currentPoseNum) {                  //generate a random until we're guarenteed a new pose
+            newPoseNum = Random.Range(1, totalNumPoses + 1);
+        }
+
+        topSpriteAnim.SetInteger("poseNum", newPoseNum);
+        currentPoseNum = newPoseNum;
     }
 }
