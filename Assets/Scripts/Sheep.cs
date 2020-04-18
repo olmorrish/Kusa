@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AIMode {
+    Closest,
+    Farthest,
+    PursuingSingleTarget
+}
+
 public class Sheep : MonoBehaviour
 {
+    public AIMode mode;
+    public Vector2 singleTarget;
+
     private Rigidbody2D rb;
     public GameObject playerReference;
 
@@ -32,15 +41,44 @@ public class Sheep : MonoBehaviour
         }
         possibleLocations[numPatches] = playerReference.transform.position;
 
-        //find the nearest of the locations, then move towards it
-        Vector2 closest = Closest(possibleLocations);
-        Vector2 moveVector = new Vector2(closest.x - transform.position.x, closest.y - transform.position.y);
+
+
+        Vector2 moveVector = Vector2.zero;
+        switch (mode) {
+            case AIMode.Closest:
+                //find the nearest of the locations, then move towards it
+                Vector2 closest = Closest(possibleLocations);
+                moveVector = new Vector2(closest.x - transform.position.x, closest.y - transform.position.y);
+                rb.AddForce(moveVector.normalized * moveForce, ForceMode2D.Force);
+                break;
+            case AIMode.Farthest:
+                //find the nearest of the locations, then move towards it
+                Vector2 farthest = Farthest(possibleLocations);
+                singleTarget = farthest;
+                moveVector = new Vector2(farthest.x - transform.position.x, farthest.y - transform.position.y);
+                mode = AIMode.PursuingSingleTarget;
+                break;
+            case AIMode.PursuingSingleTarget:
+                moveVector = new Vector2(singleTarget.x - transform.position.x, singleTarget.y - transform.position.y);
+                if (Vector2.Distance(transform.position, singleTarget) < 0.5f) {    //if we get close enough to the target, look for a new one
+                    mode = AIMode.Farthest;
+                }
+                break;
+        }
+
         rb.AddForce(moveVector.normalized * moveForce, ForceMode2D.Force);
+
+
+
+
 
         //restrict speed
         RestrictVelocity(currentMaxSpeed);
 
-
+        //add upwards pulse if stuck
+        if (rb.velocity.magnitude < 0.01f) {
+            rb.AddForce(Vector2.up + Vector2.left, ForceMode2D.Impulse);
+        }
 
         //Check if it's time to spawn a manure powerup
         if (Time.time > nextManureSpawnTime) {
@@ -70,6 +108,29 @@ public class Sheep : MonoBehaviour
         Debug.Log(possibleLocations[indexOfClosest]);
         return possibleLocations[indexOfClosest];
     }
+
+
+    /* Farthest
+     * Given an array of Vector2s, determines which is closest to this object.
+     */
+    private Vector2 Farthest(Vector2[] possibleLocations) {
+
+        float farthestSoFar = float.MinValue;
+        int indexOfFarthest = -1;
+
+        for (int i = 0; i < possibleLocations.Length; i++) {
+            float dist = Vector2.Distance(transform.position, possibleLocations[i]);
+            if (dist > farthestSoFar) {
+                farthestSoFar = dist;
+                indexOfFarthest = i;
+            }
+        }
+
+        Debug.Log(possibleLocations[indexOfFarthest]);
+        return possibleLocations[indexOfFarthest];
+    }
+
+
 
     /*
      * 
