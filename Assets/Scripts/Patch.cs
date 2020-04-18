@@ -18,9 +18,7 @@ public class Patch : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void DeleteSelf() {
+        GameObject.Destroy(gameObject);
     }
 }
