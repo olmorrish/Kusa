@@ -48,8 +48,8 @@ public class Player : MonoBehaviour {
                 //wait for input
                 //TODO
 
-                float jitterX = Random.RandomRange(-0.2f, 0.2f);
-                float jitterY = Random.RandomRange(-0.2f, 0.2f);
+                float jitterX = Random.Range(-0.2f, 0.2f);
+                float jitterY = Random.Range(-0.2f, 0.2f);
 
                 //on input, if teleport location is valid, set state to SHRINKING
                 if (Input.GetButton("left")) {

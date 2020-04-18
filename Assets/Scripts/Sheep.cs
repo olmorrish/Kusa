@@ -5,12 +5,15 @@ using UnityEngine;
 public enum AIMode {
     Closest,
     Farthest,
-    PursuingSingleTarget
+    Random, 
+    PursuingSingleTarget,
+    Player
 }
 
 public class Sheep : MonoBehaviour
 {
     public AIMode mode;
+    private AIMode previousMode; //used to save what the original mode was when a sheep pursues a single target
     public Vector2 singleTarget;
 
     private Rigidbody2D rb;
@@ -45,24 +48,44 @@ public class Sheep : MonoBehaviour
 
         Vector2 moveVector = Vector2.zero;
         switch (mode) {
+
+            //AI MODE CLOSEST: find the nearest of the locations, then move towards it
             case AIMode.Closest:
-                //find the nearest of the locations, then move towards it
                 Vector2 closest = Closest(possibleLocations);
                 moveVector = new Vector2(closest.x - transform.position.x, closest.y - transform.position.y);
                 rb.AddForce(moveVector.normalized * moveForce, ForceMode2D.Force);
                 break;
+
+            //AI MODE FARTHEST: find the farthest of the locations, then move towards it (saves the target until reached)
             case AIMode.Farthest:
-                //find the nearest of the locations, then move towards it
                 Vector2 farthest = Farthest(possibleLocations);
                 singleTarget = farthest;
                 moveVector = new Vector2(farthest.x - transform.position.x, farthest.y - transform.position.y);
+                previousMode = AIMode.Farthest;
                 mode = AIMode.PursuingSingleTarget;
                 break;
+
+            //AI MODE RANDOM: pick a patch at random, then move towards it (saves the target until reached)
+            case AIMode.Random:
+                Vector2 rand = possibleLocations[Random.Range(0, possibleLocations.Length - 1)]; ;
+                singleTarget = rand;
+                moveVector = new Vector2(rand.x - transform.position.x, rand.y - transform.position.y);
+                previousMode = AIMode.Random;
+                mode = AIMode.PursuingSingleTarget;
+                break;
+
+            //AI MODE PURSUING TARGET: moves towards a saved point until it is reached, then returns to previous AI mode
             case AIMode.PursuingSingleTarget:
                 moveVector = new Vector2(singleTarget.x - transform.position.x, singleTarget.y - transform.position.y);
-                if (Vector2.Distance(transform.position, singleTarget) < 0.5f) {    //if we get close enough to the target, look for a new one
-                    mode = AIMode.Farthest;
+                if (Vector2.Distance(transform.position, singleTarget) < 0.75f) {    //if we get close enough to the target, look for a new one
+                    mode = previousMode;
                 }
+                break;
+
+            //AI MODE PLAYER: always moves directly towards the player
+            case AIMode.Player:
+                moveVector = new Vector2(playerReference.transform.position.x - transform.position.x, 
+                                         playerReference.transform.position.y - transform.position.y);
                 break;
         }
 
@@ -87,8 +110,6 @@ public class Sheep : MonoBehaviour
         }
     }
 
-
-
     /* Closest
      * Given an array of Vector2s, determines which is closest to this object.
      */
@@ -105,13 +126,13 @@ public class Sheep : MonoBehaviour
             }
         }
 
-        Debug.Log(possibleLocations[indexOfClosest]);
+        //Debug.Log(possibleLocations[indexOfClosest]);
         return possibleLocations[indexOfClosest];
     }
 
 
     /* Farthest
-     * Given an array of Vector2s, determines which is closest to this object.
+     * Given an array of Vector2s, determines which is farthest from this object.
      */
     private Vector2 Farthest(Vector2[] possibleLocations) {
 
@@ -126,7 +147,7 @@ public class Sheep : MonoBehaviour
             }
         }
 
-        Debug.Log(possibleLocations[indexOfFarthest]);
+        //Debug.Log(possibleLocations[indexOfFarthest]);
         return possibleLocations[indexOfFarthest];
     }
 
