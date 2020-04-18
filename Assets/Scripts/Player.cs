@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    //Player State and Animation
     public enum PlayerState {
         Idle, 
         Growing,
         Shrinking
     }
-
     public PlayerState currentState;
+    private Animator anim;
+    int visualEnergyLevel;
 
-    private Transform myPos;
 
     public GameObject grassPatchPrefab;
 
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        myPos = gameObject.GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -96,4 +97,32 @@ public class Player : MonoBehaviour {
         currentState = newState;
     }
 
+
+    /*
+     * 
+     * 
+     */
+    private void UpdateAnimator() {
+
+        anim.SetInteger("energyLevel", visualEnergyLevel);
+
+        //TODO
+        switch (currentState) {
+            case PlayerState.Idle:
+                anim.SetBool("idle", true);
+                anim.SetBool("growing", false);
+                anim.SetBool("shrinking", false);
+                break;
+            case PlayerState.Growing:
+                anim.SetBool("idle", false);
+                anim.SetBool("growing", true);
+                anim.SetBool("shrinking", false);
+                break;
+            case PlayerState.Shrinking:
+                anim.SetBool("idle", false);
+                anim.SetBool("growing", false);
+                anim.SetBool("shrinking", true);
+                break;
+        }
+    }
 }
