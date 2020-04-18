@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Patch
   - Sheep
+  - PowerUp
   layers:
   - Default
   - TransparentFX

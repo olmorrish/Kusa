@@ -13,6 +13,12 @@ public class Player : MonoBehaviour {
     }
     public PlayerState currentState;
     private Animator anim;
+
+
+    public float initialAnimatorSpeed;
+    public float powerupAnimSpeedIncrease;
+
+
     int visualEnergyLevel;
 
 
@@ -21,12 +27,13 @@ public class Player : MonoBehaviour {
     private Vector3 target;
     public float moveDistance; //the distance the grass will move
 
-    public LayerMask whatIsWall;
+    public LayerMask whatIsSolid;
     public float hitCheckSize;
 
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
+        anim.speed = initialAnimatorSpeed;
     }
 
     // Update is called once per frame
@@ -78,20 +85,38 @@ public class Player : MonoBehaviour {
     }
 
 
-    /* Teleport To
-     * 
-     */
-     public bool Teleport() {
-        SpawnGrassPatch();
-        currentState = PlayerState.Growing;
-        transform.position = target;
-        return true; //TODO add a fail condition
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("PowerUp")) {
+            anim.speed += powerupAnimSpeedIncrease;
+            GameObject.Destroy(collision.gameObject);
+        }
     }
 
 
-    public bool CollisionInDirection(Vector2 target) {
 
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(target, hitCheckSize, whatIsWall);
+    /* Teleport To
+     * Called as an animation event when the grass in despawning
+     * This also instantiates a patch of grass in the position before leaving
+     */
+    public bool Teleport() {
+
+        if (!TargetBlocked()) {
+            SpawnGrassPatch();
+            currentState = PlayerState.Growing;
+            transform.position = target;
+            return true;
+        }
+        else {
+            currentState = PlayerState.Idle;
+            return false;
+        }
+
+    }
+
+
+    public bool TargetBlocked(){
+
+        Collider2D[] collisions = Physics2D.OverlapCircleAll(target, hitCheckSize, whatIsSolid);
         if (collisions.Length > 0)
             return true;
         else
@@ -142,4 +167,5 @@ public class Player : MonoBehaviour {
                 break;
         }
     }
+
 }
