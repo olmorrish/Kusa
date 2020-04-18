@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
     public GameObject grassPatchPrefab;
 
     private Vector3 target;
-    public float speed = 10f;
     public float moveDistance; //the distance the grass will move
 
     public LayerMask whatIsWall;
@@ -33,23 +32,41 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        UpdateAnimator();
         
         switch (currentState) {
 
             // STATE: IDLE
             case PlayerState.Idle:
                 //wait for input
-                float verticalIn = Input.GetAxis("Vertical");
-                float horizontalIn = Input.GetAxis("Horizontal");
-
                 //TODO
+
+                float jitterX = Random.RandomRange(-0.2f, 0.2f);
+                float jitterY = Random.RandomRange(-0.2f, 0.2f);
+
                 //on input, if teleport location is valid, set state to SHRINKING
+                if (Input.GetButton("left")) {
+                    target = new Vector3(transform.position.x - moveDistance * 1.5f + jitterX, transform.position.y + jitterY);
+                    currentState = PlayerState.Shrinking;   //this animation calls teleport to the target on its last frame
+                }
+                else if (Input.GetButton("right")) {
+                    target = new Vector3(transform.position.x + moveDistance * 1.5f + jitterX, transform.position.y + jitterY);
+                    currentState = PlayerState.Shrinking;   //this animation calls teleport to the target on its last frame
+                }
+                else if (Input.GetButton("up")) {
+                    target = new Vector3(transform.position.x + jitterX, transform.position.y + moveDistance + jitterY);
+                    currentState = PlayerState.Shrinking;   //this animation calls teleport to the target on its last frame
+                }
+                else if (Input.GetButton("down")) {
+                    target = new Vector3(transform.position.x + jitterX, transform.position.y - moveDistance + jitterY);
+                    currentState = PlayerState.Shrinking;   //this animation calls teleport to the target on its last frame
+                }
+
                 break;
 
             // STATE: GROWING
             case PlayerState.Growing:
                 break;
-
 
 
             // STATE: SHRINKING
@@ -61,10 +78,12 @@ public class Player : MonoBehaviour {
     }
 
 
-    /*
+    /* Teleport To
      * 
      */
-     public bool TeleportTo(Vector2 target) {
+     public bool Teleport() {
+        SpawnGrassPatch();
+        currentState = PlayerState.Growing;
         transform.position = target;
         return true; //TODO add a fail condition
     }

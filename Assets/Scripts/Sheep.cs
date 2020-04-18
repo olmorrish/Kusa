@@ -7,12 +7,17 @@ public class Sheep : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject playerReference;
 
+    public GameObject manurePrefab;
+    public float manureSpawnInterval;
+    private float nextManureSpawnTime;
+
     public float moveForce;
     public float currentMaxSpeed;
 
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        nextManureSpawnTime = Time.time + Random.RandomRange(0, manureSpawnInterval);
     }
 
     // Update is called once per frame
@@ -34,6 +39,14 @@ public class Sheep : MonoBehaviour
 
         //restrict speed
         RestrictVelocity(currentMaxSpeed);
+
+
+
+        //Check if it's time to spawn a manure powerup
+        if (Time.time > nextManureSpawnTime) {
+            Instantiate(manurePrefab, transform.position, rotation: Quaternion.identity);
+            nextManureSpawnTime = Time.time + manureSpawnInterval;
+        }
     }
 
 

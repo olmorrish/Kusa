@@ -12,8 +12,9 @@ public class Patch : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.gameObject.CompareTag("Sheep")) {
+    private void OnCollisionEnter2D(Collision2D col) {
+
+        if (col.gameObject.CompareTag("Sheep")) {
             anim.SetBool("killed", true);
         }
     }
