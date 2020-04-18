@@ -180,8 +180,9 @@ public class Sheep : MonoBehaviour
 
     /* New Pose
      * Changes the top half of the sheep to a random new pose
+     * This function is called for all sheep on certain beats
      */
-    private void NewPose() {
+    public void NewPose() {
         int newPoseNum = Random.Range(1,totalNumPoses + 1); 
         
         while (newPoseNum == currentPoseNum) {                  //generate a random until we're guarenteed a new pose
