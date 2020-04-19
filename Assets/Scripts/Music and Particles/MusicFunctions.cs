@@ -12,7 +12,7 @@ public class MusicFunctions : MonoBehaviour
     private bool poseChangeNextBeat;
 
     public ParticleSystem grassPSystem;
-    public ParticleSystem sheepPSystem;
+    public ParticleSystem[] sheepPSystems;
     public int burstAmount;
 
     public bool triggerForTestingNotPermanent;
@@ -20,6 +20,13 @@ public class MusicFunctions : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         allSheep = GameObject.FindGameObjectsWithTag("Sheep");
+
+        sheepPSystems = new ParticleSystem[allSheep.Length];
+        for(int i=0; i<sheepPSystems.Length; i++) {
+            sheepPSystems[i] = allSheep[i].GetComponentInChildren<ParticleSystem>();
+        }
+
+
 
         nextGrassBeatTime = Time.time + 1;
         nextSheepBeatTime = Time.time + 1.5f;
@@ -61,13 +68,17 @@ public class MusicFunctions : MonoBehaviour
 
     public void Beat2() {
         //TODO kanji from sheep
-        TriggerSheepParticleBurst(burstAmount);
+        for (int i = 0; i < sheepPSystems.Length; i++) {
+            TriggerSheepParticleBurst(burstAmount, sheepPSystems[i]);
+        }
     }
 
 
     public void Beat4() {
-        //TODO kanji from sheep
-        TriggerSheepParticleBurst(burstAmount);
+
+        for (int i = 0; i < sheepPSystems.Length; i++) {
+            TriggerSheepParticleBurst(burstAmount, sheepPSystems[i]);
+        }
 
         //change the pose of every sheep in the scene
         for (int i=0; i<allSheep.Length; i++) {
@@ -76,14 +87,14 @@ public class MusicFunctions : MonoBehaviour
     }
 
 
-    public void TriggerSheepParticleBurst(int amount) {
-
-        if (sheepPSystem != null) {
-            sheepPSystem.Play();
-            sheepPSystem.emission.SetBurst(0, new ParticleSystem.Burst(0, amount));
-            return;
-        }
-        Debug.Log("Didn't set the particle system dummy.");
+    public void TriggerSheepParticleBurst(int amount, ParticleSystem pSys) {
+            if (pSys != null) {
+                Debug.Log("BURST");
+                pSys.Play();
+                pSys.emission.SetBurst(0, new ParticleSystem.Burst(0, amount));
+                return;
+            }
+            Debug.Log("Didn't set the particle system dummy.");
     }
 
     public void TriggerGrassParticleBurst(int amount) {
