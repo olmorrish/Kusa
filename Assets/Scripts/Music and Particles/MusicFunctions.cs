@@ -12,7 +12,7 @@ public class MusicFunctions : MonoBehaviour
     private bool poseChangeNextBeat;
 
     public ParticleSystem grassPSystem;
-    public ParticleSystem[] sheepPSystems;
+    private ParticleSystem[] sheepPSystems;
     public int burstAmount;
 
     public bool triggerForTestingNotPermanent;
@@ -88,13 +88,12 @@ public class MusicFunctions : MonoBehaviour
 
 
     public void TriggerSheepParticleBurst(int amount, ParticleSystem pSys) {
-            if (pSys != null) {
-                Debug.Log("BURST");
-                pSys.Play();
-                pSys.emission.SetBurst(0, new ParticleSystem.Burst(0, amount));
-                return;
-            }
-            Debug.Log("Didn't set the particle system dummy.");
+        if (pSys != null) {
+            pSys.Play();
+            pSys.emission.SetBurst(0, new ParticleSystem.Burst(0, amount));
+            return;
+        }
+        Debug.Log("Didn't set the particle system dummy.");
     }
 
     public void TriggerGrassParticleBurst(int amount) {
