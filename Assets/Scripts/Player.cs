@@ -37,11 +37,15 @@ public class Player : MonoBehaviour {
     private float nextLevelTime;
     public float delayOnLevelComplete;
 
+    //Sound Effects
+    public GameObject soundEffectParentObject;
+    private FXController fxController;
 
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
         anim.speed = initialAnimatorSpeed;
+        fxController = soundEffectParentObject.GetComponent<FXController>();
         powerLevel = 0;
         levelDone = false;
         nextLevelTime = -1f;
@@ -107,6 +111,7 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("PowerUp")) {
+            fxController.PlayEffect("Success");
             anim.speed += powerupAnimSpeedIncrease;
             GameObject.Destroy(collision.gameObject);
         }
@@ -123,7 +128,9 @@ public class Player : MonoBehaviour {
      * This also instantiates a patch of grass in the position before leaving
      */
     public bool Teleport() {
+        fxController.PlayEffect("Grass");
 
+        //
         if (!TargetBlocked()) {
             SpawnGrassPatch();
             currentState = PlayerState.Growing;

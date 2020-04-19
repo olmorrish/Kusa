@@ -7,15 +7,22 @@ public class Patch : MonoBehaviour
 
     private Animator anim;
 
+    //Sound
+    public GameObject soundEffectParentObject;
+    private FXController fxController;
+
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
+        soundEffectParentObject = GameObject.Find("SoundEffects");
+        fxController = soundEffectParentObject.GetComponent<FXController>();
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
 
         //play the fire animation (which then deletes the patch) if a sheep touches it
         if (col.gameObject.CompareTag("Sheep")) {
+            fxController.PlayEffect("Fire");
             anim.SetBool("killed", true);
         }
 

@@ -37,7 +37,12 @@ public class Sheep : MonoBehaviour
     public float currentMaxSpeed;
     private float nextSpeedUpTime;
     public float speedUpInterval;
-    public float speedUpBy; 
+    public float speedUpBy;
+
+    //Sound
+    public GameObject soundEffectParentObject;
+    private FXController fxController;
+    
 
     
     // Start is called before the first frame update
@@ -49,6 +54,9 @@ public class Sheep : MonoBehaviour
 
         nextManureSpawnTime = Time.time + Random.Range(0, manureSpawnInterval);
         nextSpeedUpTime = Time.time + speedUpInterval; 
+
+        soundEffectParentObject = GameObject.Find("SoundEffects");
+        fxController = soundEffectParentObject.GetComponent<FXController>();
 
         topSpriteAnim = gameObject.GetComponentInChildren<Animator>();
         currentPoseNum = -1;
@@ -129,6 +137,7 @@ public class Sheep : MonoBehaviour
         if (Time.time > nextManureSpawnTime) {
             Instantiate(manurePrefab, transform.position, rotation: Quaternion.identity);
             nextManureSpawnTime = Time.time + manureSpawnInterval;
+            fxController.PlayEffect("Fart");
         }
 
         //check if it's time to speed up
@@ -212,6 +221,8 @@ public class Sheep : MonoBehaviour
         while (newPoseNum == currentPoseNum) {                  //generate a random until we're guarenteed a new pose
             newPoseNum = Random.Range(1, totalNumPoses + 1);
         }
+
+        fxController.PlayEffect("Wah");
 
         topSpriteAnim.SetInteger("poseNum", newPoseNum);
         currentPoseNum = newPoseNum;
