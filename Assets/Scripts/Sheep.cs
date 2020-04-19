@@ -17,6 +17,7 @@ public class Sheep : MonoBehaviour
     public Vector2 singleTarget;
 
     private Rigidbody2D rb;
+    private Transform tr;
     public GameObject playerReference;
 
     private Animator topSpriteAnim;
@@ -33,6 +34,7 @@ public class Sheep : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<Transform>();
         nextManureSpawnTime = Time.time + Random.Range(0, manureSpawnInterval);
         topSpriteAnim = gameObject.GetComponentInChildren<Animator>();
         currentPoseNum = -1;
@@ -41,6 +43,8 @@ public class Sheep : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate() {
+        maintainSize();
+
         GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag("Patch");
         int numPatches = possibleTargets.Length;
 
@@ -191,5 +195,16 @@ public class Sheep : MonoBehaviour
 
         topSpriteAnim.SetInteger("poseNum", newPoseNum);
         currentPoseNum = newPoseNum;
+    }
+
+    /// <summary>
+    /// returns size to normal after on Beat expansion
+    /// </summary>
+    private void maintainSize()
+    {
+        if(tr.localScale.x > 1)
+        {
+            tr.localScale -= new Vector3(0.02f, 0.02f, 0.02f);
+        }
     }
 }

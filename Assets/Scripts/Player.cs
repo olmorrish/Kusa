@@ -176,5 +176,27 @@ public class Player : MonoBehaviour {
     public void UpdatePowerLevel() {
         GameObject[] patches = GameObject.FindGameObjectsWithTag("Patch");
         powerLevel += patches.Length;   //this counts the player as a patch as well btw
+
+        spawnTextOnWin(2500);
+    }
+
+    /// <summary>
+    /// checks if power level is greater than winScore, spawns coloured text wave if it is
+    /// kinda jank in its current state, would be better to just use a boolean to make it not happen but i dont want to hurt this
+    /// beautiful script
+    /// </summary>
+    /// <param name="winScore"></param>
+    private void spawnTextOnWin(int winScore)
+    {
+        if (powerLevel > winScore)
+        {
+            GameObject textSpawner = GameObject.Find("Text Swarm Spawner");
+            if (textSpawner == null)
+            {
+                return;
+            }
+            textSpawner.GetComponent<TextSpawner>().spawnTextWave(800);
+            Destroy(textSpawner);
+        }
     }
 }

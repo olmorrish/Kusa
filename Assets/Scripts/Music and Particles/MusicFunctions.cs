@@ -83,6 +83,7 @@ public class MusicFunctions : MonoBehaviour
         //change the pose of every sheep in the scene
         for (int i=0; i<allSheep.Length; i++) {
             allSheep[i].GetComponent<Sheep>().NewPose();
+            allSheep[i].GetComponent<Transform>().localScale *= 1.1f;
         }
     }
 
