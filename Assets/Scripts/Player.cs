@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour {
 
     //Scoring and Progress
     public int powerLevel;
+    public Text pLevelText;
 
 
     // Start is called before the first frame update
@@ -92,6 +94,10 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.CompareTag("PowerUp")) {
             anim.speed += powerupAnimSpeedIncrease;
             GameObject.Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Sheep")) {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
     }
 
@@ -176,6 +182,8 @@ public class Player : MonoBehaviour {
     public void UpdatePowerLevel() {
         GameObject[] patches = GameObject.FindGameObjectsWithTag("Patch");
         powerLevel += patches.Length;   //this counts the player as a patch as well btw
+
+        pLevelText.text = "POWER LEVEL - " + powerLevel.ToString();
 
         spawnTextOnWin(2500);
     }

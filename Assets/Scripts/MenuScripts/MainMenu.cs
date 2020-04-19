@@ -24,4 +24,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
     }
 
+    public void LoadMainMenu() {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
 }

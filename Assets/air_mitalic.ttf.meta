@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: ebbfd26238a04e142a80be51dbd3fe79
+guid: 4ee8286f9cea82c4f821144df0a3aee8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 64
-  forceTextureCase: -2
+  fontSize: 300
+  forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Bombing
+  fontName: Air Millhouse  Italic
   fontNames:
-  - Bombing
+  - Air Millhouse  Italic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
-  ascentCalculationMode: 1
+  ascentCalculationMode: 2
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
   userData: 
