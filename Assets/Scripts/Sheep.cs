@@ -12,30 +12,42 @@ public enum AIMode {
 
 public class Sheep : MonoBehaviour
 {
+    //AI Modes
     public AIMode mode;
     private AIMode previousMode; //used to save what the original mode was when a sheep pursues a single target
     public Vector2 singleTarget;
 
+    //Component and Object References
     private Rigidbody2D rb;
     private Transform tr;
     public GameObject playerReference;
 
+    //Poses
     private Animator topSpriteAnim;
     public int currentPoseNum;
     public int totalNumPoses;
 
+    //Manure Spawns
     public GameObject manurePrefab;
     public float manureSpawnInterval;
     private float nextManureSpawnTime;
 
+    //Movement
     public float moveForce;
     public float currentMaxSpeed;
+    private float nextSpeedUpTime;
+    public float speedUpInterval;
+    public float speedUpBy; 
 
+    
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
+
         nextManureSpawnTime = Time.time + Random.Range(0, manureSpawnInterval);
+        nextSpeedUpTime = Time.time + speedUpInterval; 
+
         topSpriteAnim = gameObject.GetComponentInChildren<Animator>();
         currentPoseNum = -1;
         NewPose();
@@ -115,6 +127,12 @@ public class Sheep : MonoBehaviour
         if (Time.time > nextManureSpawnTime) {
             Instantiate(manurePrefab, transform.position, rotation: Quaternion.identity);
             nextManureSpawnTime = Time.time + manureSpawnInterval;
+        }
+
+        //check if it's time to speed up
+        if (Time.time > nextSpeedUpTime) {
+            currentMaxSpeed += speedUpBy;
+            nextSpeedUpTime = Time.time + speedUpInterval;
         }
     }
 
