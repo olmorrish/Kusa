@@ -45,6 +45,8 @@ public class Sheep : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
 
+        playerReference = GameObject.Find("PlayerGrass");
+
         nextManureSpawnTime = Time.time + Random.Range(0, manureSpawnInterval);
         nextSpeedUpTime = Time.time + speedUpInterval; 
 

@@ -32,12 +32,19 @@ public class Player : MonoBehaviour {
     public int powerLevel;
     public Text pLevelText;
 
+    //Next Level Transition
+    private bool levelDone;
+    private float nextLevelTime;
+    public float delayOnLevelComplete;
+
 
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
         anim.speed = initialAnimatorSpeed;
         powerLevel = 0;
+        levelDone = false;
+        nextLevelTime = -1f;
     }
 
     // Update is called once per frame
@@ -86,6 +93,14 @@ public class Player : MonoBehaviour {
                 break;
         }
 
+        //Check if the level is done, in which case set nextleveltimer
+        if(powerLevel >= 2500 && !levelDone) {
+            levelDone = true;
+            nextLevelTime = Time.time + delayOnLevelComplete;
+        }
+        if (levelDone && (Time.time >= nextLevelTime)) {
+                LoadNextLevel();
+        }
 
     }
 
@@ -183,9 +198,10 @@ public class Player : MonoBehaviour {
         GameObject[] patches = GameObject.FindGameObjectsWithTag("Patch");
         powerLevel += patches.Length;   //this counts the player as a patch as well btw
 
-        pLevelText.text = "POWER LEVEL - " + powerLevel.ToString();
+        pLevelText.text = "POWER LEVEL " + powerLevel.ToString();
 
         spawnTextOnWin(2500);
+
     }
 
     /// <summary>
@@ -205,6 +221,47 @@ public class Player : MonoBehaviour {
             }
             textSpawner.GetComponent<TextSpawner>().spawnTextWave(800);
             Destroy(textSpawner);
+        }
+    }
+
+    public void LoadNextLevel() {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        Debug.Log("Current scene is: " + currentScene);
+
+        switch (currentScene) {
+
+            case "Level1":
+                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                break;
+            case "Level2":
+                SceneManager.LoadScene("Level3", LoadSceneMode.Single);
+                break;
+            case "Level3":
+                SceneManager.LoadScene("Level4", LoadSceneMode.Single);
+                break;
+            case "Level4":
+                SceneManager.LoadScene("Level5", LoadSceneMode.Single);
+                break;
+            case "Level5":
+                SceneManager.LoadScene("Level6", LoadSceneMode.Single);
+                break;
+            case "Level6":
+                SceneManager.LoadScene("Level7", LoadSceneMode.Single);
+                break;
+            case "Level7":
+                SceneManager.LoadScene("Level8", LoadSceneMode.Single);
+                break;
+            case "Level8":
+                SceneManager.LoadScene("Level9", LoadSceneMode.Single);
+                break;
+            case "Level9":
+                SceneManager.LoadScene("Level10", LoadSceneMode.Single);
+                break;
+            case "Level10":
+                SceneManager.LoadScene("YouWin", LoadSceneMode.Single);
+                break;
+
         }
     }
 }
