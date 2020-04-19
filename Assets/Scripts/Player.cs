@@ -173,7 +173,7 @@ public class Player : MonoBehaviour {
     /* Update Power Level
      * Increases the power level by the number of patches of grass currently onscreen.
      */
-    private void UpdatePowerLevel() {
+    public void UpdatePowerLevel() {
         GameObject[] patches = GameObject.FindGameObjectsWithTag("Patch");
         powerLevel += patches.Length;   //this counts the player as a patch as well btw
     }

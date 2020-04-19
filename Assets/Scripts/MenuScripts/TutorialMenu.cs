@@ -18,6 +18,10 @@ public class TutorialMenu : MonoBehaviour {
 
     }
 
+    public void ToTutorial2() {
+        SceneManager.LoadScene("Tutorial2", LoadSceneMode.Single);
+    }
+
     public void StartGame() {
         SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
