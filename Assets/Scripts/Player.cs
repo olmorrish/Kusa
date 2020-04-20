@@ -234,7 +234,7 @@ public class Player : MonoBehaviour {
     public void LoadNextLevel() {
         string currentScene = SceneManager.GetActiveScene().name;
 
-        Debug.Log("Current scene is: " + currentScene);
+        //Debug.Log("Current scene is: " + currentScene);
 
         switch (currentScene) {
 
