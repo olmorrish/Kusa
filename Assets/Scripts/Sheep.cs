@@ -222,7 +222,7 @@ public class Sheep : MonoBehaviour
             newPoseNum = Random.Range(1, totalNumPoses + 1);
         }
 
-        fxController.PlayEffect("Wah");
+        //fxController.PlayEffect("Wah");
 
         topSpriteAnim.SetInteger("poseNum", newPoseNum);
         currentPoseNum = newPoseNum;

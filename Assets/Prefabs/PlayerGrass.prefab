@@ -126,7 +126,8 @@ MonoBehaviour:
   hitCheckSize: 0.4
   powerLevel: 0
   pLevelText: {fileID: 0}
-  delayOnLevelComplete: 0.7
+  delayOnLevelComplete: 0.5
+  soundEffectParentObject: {fileID: 0}
 --- !u!95 &6652601767376003790
 Animator:
   serializedVersion: 3
