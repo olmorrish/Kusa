@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2636062140932087512}
   - component: {fileID: 2636062140932087518}
   - component: {fileID: 5193560161095638460}
+  - component: {fileID: 7569820128420846847}
   m_Layer: 8
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
   m_Radius: 0.6698394
+--- !u!114 &7569820128420846847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636062140932087514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6ce102d4c112f40b2785be1e055af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

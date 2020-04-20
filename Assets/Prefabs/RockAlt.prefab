@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5398396203327004094}
   - component: {fileID: 5398396203327004088}
   - component: {fileID: 2768837741079338714}
+  - component: {fileID: 8764098374009258739}
   m_Layer: 8
   m_Name: RockAlt
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
   m_Radius: 0.7127155
+--- !u!114 &8764098374009258739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398396203327004092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6ce102d4c112f40b2785be1e055af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

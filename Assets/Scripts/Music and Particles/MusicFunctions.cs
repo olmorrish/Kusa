@@ -68,18 +68,59 @@ public class MusicFunctions : MonoBehaviour
     public void Beat1or3() {
         TriggerGrassParticleBurst(burstAmount);                     //shoots kanji from grass
         playerReference.GetComponent<Player>().UpdatePowerLevel();
+
+        //get ref to all patches in scene right now
+        GameObject[] allPatches = GameObject.FindGameObjectsWithTag("Patch");
+        Debug.Log(allPatches.Length);
+
+        //give off all particle bursts
+        ParticleSystem[] allPatchPSystems = new ParticleSystem[allPatches.Length];
+        for (int i = 0; i < allPatchPSystems.Length; i++) {
+            allPatchPSystems[i] = allPatches[i].GetComponentInChildren<ParticleSystem>();
+            if (allPatchPSystems[i] != null) {
+                allPatchPSystems[i].Play();
+                allPatchPSystems[i].emission.SetBurst(0, new ParticleSystem.Burst(0, 1));
+            }
+        }
+
+        //do all the bops
+        for (int i = 0; i < allPatches.Length; i++) {
+            allPatches[i].GetComponent<Transform>().localScale *= 1.1f; //the bop will be reset by the patch script on its next fixed update
+        }
+
+        //bop powerups
+        GameObject[] allManure = GameObject.FindGameObjectsWithTag("PowerUp");
+        for (int i = 0; i < allManure.Length; i++) {
+            allManure[i].GetComponent<Transform>().localScale *= 1.1f; //the bop will be reset by the patch script on its next fixed update
+        }
     }
 
     public void Beat2() {
-        //TODO kanji from sheep
+        // kanji from sheep
         for (int i = 0; i < sheepPSystems.Length; i++) {
             TriggerSheepParticleBurst(burstAmount, sheepPSystems[i]);
         }
+
+        ////do all the bops for obstacles
+        //GameObject[] allObstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        //for (int i = 0; i < allObstacles.Length; i++) {
+        //    allObstacles[i].GetComponent<Transform>().localScale *= 1.1f; //the bop will be reset by the patch script on its next fixed update
+        //}
+
+        
+
     }
 
 
     public void Beat4() {
 
+        //do all the bops for obstacles
+        GameObject[] allObstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        for (int i = 0; i < allObstacles.Length; i++) {
+            allObstacles[i].GetComponent<Transform>().localScale *= 1.1f; //the bop will be reset by the patch script on its next fixed update
+        }
+
+        //sheep kanji
         for (int i = 0; i < sheepPSystems.Length; i++) {
             TriggerSheepParticleBurst(burstAmount, sheepPSystems[i]);
         }

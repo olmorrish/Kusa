@@ -18,6 +18,10 @@ public class Patch : MonoBehaviour
         fxController = soundEffectParentObject.GetComponent<FXController>();
     }
 
+    private void FixedUpdate() {
+        maintainSize();
+    }
+
     private void OnCollisionEnter2D(Collision2D col) {
 
         //play the fire animation (which then deletes the patch) if a sheep touches it
@@ -41,5 +45,14 @@ public class Patch : MonoBehaviour
 
     public void DeleteSelf() {
         GameObject.Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// returns size to normal after on Beat expansion
+    /// </summary>
+    private void maintainSize() {
+        if (transform.localScale.x > 1) {
+            transform.localScale -= new Vector3(0.02f, 0.02f, 0.02f);
+        }
     }
 }
