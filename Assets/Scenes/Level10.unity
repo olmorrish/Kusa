@@ -4522,7 +4522,7 @@ PrefabInstance:
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
@@ -6412,85 +6412,6 @@ PrefabInstance:
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654771, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: soundEffectsParentObject
-      value: 
-      objectReference: {fileID: 1483417301}
-    - target: {fileID: 4482390496586654771, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: soundEffectParentObject
-      value: 
-      objectReference: {fileID: 1483417301}
-    - target: {fileID: 4482390496586654782, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_Name
-      value: Sheep_Smart (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 97503f001c0bbfd498c424f5002b8831, type: 3}
---- !u!1001 &1059059061
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
@@ -6521,7 +6442,7 @@ PrefabInstance:
     - target: {fileID: 4482390496586654782, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_Name
-      value: Sheep_Smart (6)
+      value: Sheep_Smart (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97503f001c0bbfd498c424f5002b8831, type: 3}
@@ -6780,7 +6701,7 @@ PrefabInstance:
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
@@ -7777,85 +7698,6 @@ Transform:
   m_Father: {fileID: 1483417303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1743985769
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482390496586654771, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: soundEffectsParentObject
-      value: 
-      objectReference: {fileID: 1483417301}
-    - target: {fileID: 4482390496586654771, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: soundEffectParentObject
-      value: 
-      objectReference: {fileID: 1483417301}
-    - target: {fileID: 4482390496586654782, guid: 97503f001c0bbfd498c424f5002b8831,
-        type: 3}
-      propertyPath: m_Name
-      value: Sheep_Smart (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 97503f001c0bbfd498c424f5002b8831, type: 3}
 --- !u!1001 &1782593523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7970,7 +7812,7 @@ PrefabInstance:
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
@@ -8187,7 +8029,7 @@ PrefabInstance:
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4482390496586654769, guid: 97503f001c0bbfd498c424f5002b8831,
         type: 3}

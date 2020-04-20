@@ -130,8 +130,8 @@ public class Sheep : MonoBehaviour
 
         //add random pulse if stuck, and if a couple second have passed in the scene
         if (rb.velocity.magnitude < 0.01f && Time.time > 2f) {
-            Vector2[] randomVectors = { Vector2.up * 2, Vector2.down * 2, Vector2.left * 2, Vector2.right * 2 };
-            Vector2 randomDir = randomVectors[Random.RandomRange(0, 4)];
+            Vector2[] randomVectors = { Vector2.up * 4, Vector2.down * 4, Vector2.left * 4, Vector2.right * 4 };
+            Vector2 randomDir = randomVectors[Random.Range(0, 4)];
             rb.AddForce(randomDir, ForceMode2D.Impulse);
         }
 
