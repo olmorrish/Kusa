@@ -17,6 +17,10 @@ public class MusicFunctions : MonoBehaviour
 
     public bool triggerForTestingNotPermanent;
 
+    //Sound Effects
+    public GameObject soundEffectParentObject;
+    private FXController fxController;
+
     // Start is called before the first frame update
     void Start() {
         allSheep = GameObject.FindGameObjectsWithTag("Sheep");
@@ -26,7 +30,7 @@ public class MusicFunctions : MonoBehaviour
             sheepPSystems[i] = allSheep[i].GetComponentInChildren<ParticleSystem>();
         }
 
-
+        fxController = soundEffectParentObject.GetComponent<FXController>();
 
         nextGrassBeatTime = Time.time + 1;
         nextSheepBeatTime = Time.time + 1.5f;
@@ -81,6 +85,7 @@ public class MusicFunctions : MonoBehaviour
         }
 
         //change the pose of every sheep in the scene
+        fxController.PlayEffect("Wah");
         for (int i=0; i<allSheep.Length; i++) {
             allSheep[i].GetComponent<Sheep>().NewPose();
             allSheep[i].GetComponent<Transform>().localScale *= 1.1f;

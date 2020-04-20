@@ -128,9 +128,11 @@ public class Sheep : MonoBehaviour
         //restrict speed
         RestrictVelocity(currentMaxSpeed);
 
-        //add upwards pulse if stuck
-        if (rb.velocity.magnitude < 0.01f) {
-            rb.AddForce(Vector2.up + Vector2.left, ForceMode2D.Impulse);
+        //add random pulse if stuck, and if a couple second have passed in the scene
+        if (rb.velocity.magnitude < 0.01f && Time.time > 2f) {
+            Vector2[] randomVectors = { Vector2.up * 2, Vector2.down * 2, Vector2.left * 2, Vector2.right * 2 };
+            Vector2 randomDir = randomVectors[Random.RandomRange(0, 4)];
+            rb.AddForce(randomDir, ForceMode2D.Impulse);
         }
 
         //Check if it's time to spawn a manure powerup
@@ -216,13 +218,11 @@ public class Sheep : MonoBehaviour
      * This function is called for all sheep on certain beats
      */
     public void NewPose() {
-        int newPoseNum = Random.Range(1,totalNumPoses + 1); 
-        
+        int newPoseNum = Random.Range(1,totalNumPoses + 1);
+
         while (newPoseNum == currentPoseNum) {                  //generate a random until we're guarenteed a new pose
             newPoseNum = Random.Range(1, totalNumPoses + 1);
         }
-
-        //fxController.PlayEffect("Wah");
 
         topSpriteAnim.SetInteger("poseNum", newPoseNum);
         currentPoseNum = newPoseNum;

@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.45
 --- !u!114 &6652601767376003789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   hitCheckSize: 0.4
   powerLevel: 0
   pLevelText: {fileID: 0}
-  delayOnLevelComplete: 0.5
+  delayOnLevelComplete: 0.15
   soundEffectParentObject: {fileID: 0}
 --- !u!95 &6652601767376003790
 Animator:

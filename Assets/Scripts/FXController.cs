@@ -37,7 +37,6 @@ public class FXController : MonoBehaviour
             case "Wah":
                 effects[4].Play();
                 break;
-
         }
 
     }

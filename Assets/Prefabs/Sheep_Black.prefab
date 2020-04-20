@@ -4884,7 +4884,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2416585759940089905, guid: 6532992c8681f914fb6b4042368d1116,
+  m_Sprite: {fileID: 4200463369099005656, guid: e94dc2e05ed40cb409afe7126b895ea9,
     type: 3}
   m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_FlipX: 0
@@ -4984,7 +4984,7 @@ MonoBehaviour:
   singleTarget: {x: 0, y: 0}
   playerReference: {fileID: 0}
   currentPoseNum: 0
-  totalNumPoses: 2
+  totalNumPoses: 4
   manurePrefab: {fileID: 4442639817356249296, guid: 394f45cd90c1d7c4999b2e78450f5106,
     type: 3}
   manureSpawnInterval: 12
@@ -4992,6 +4992,7 @@ MonoBehaviour:
   currentMaxSpeed: 1
   speedUpInterval: 5
   speedUpBy: 0.1
+  soundEffectParentObject: {fileID: 0}
 --- !u!50 &3736419625010790258
 Rigidbody2D:
   serializedVersion: 4
