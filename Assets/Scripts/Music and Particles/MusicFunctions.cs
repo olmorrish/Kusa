@@ -71,7 +71,7 @@ public class MusicFunctions : MonoBehaviour
 
         //get ref to all patches in scene right now
         GameObject[] allPatches = GameObject.FindGameObjectsWithTag("Patch");
-        Debug.Log(allPatches.Length);
+        //Debug.Log(allPatches.Length);
 
         //give off all particle bursts
         ParticleSystem[] allPatchPSystems = new ParticleSystem[allPatches.Length];
