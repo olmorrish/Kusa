@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TutorialMenu : MonoBehaviour {
+public class TutorialandLevelSelectMenus : MonoBehaviour {
 
     public Button tutorialMenuDefaultButton;
 
@@ -18,12 +18,24 @@ public class TutorialMenu : MonoBehaviour {
 
     }
 
+    public void ToLevelSelect() {
+        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
+    }
+
+    public void ToTutorial1() {
+        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+    }
+
     public void ToTutorial2() {
         SceneManager.LoadScene("Tutorial2", LoadSceneMode.Single);
     }
 
-    public void StartGame() {
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+    public void LoadLevel(int lvl) {
+        SceneManager.LoadScene("Level"+lvl.ToString(), LoadSceneMode.Single);
+    }
+
+    public void ToMain() {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
 }
