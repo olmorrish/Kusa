@@ -5209,10 +5209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754881187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b011df8582729124b95daac0579df8d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 95072d44e2dd20b4295885cdfdf8c5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialMenuDefaultButton: {fileID: 480732479}
+  tutorialDefaultButton: {fileID: 480732479}
 --- !u!114 &1754881189
 MonoBehaviour:
   m_ObjectHideFlags: 0

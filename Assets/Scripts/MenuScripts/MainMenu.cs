@@ -9,15 +9,8 @@ public class MainMenu : MonoBehaviour
     public Button mainMenuDefaultButton;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         mainMenuDefaultButton.Select();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void LoadHowToPlay() {
@@ -26,6 +19,10 @@ public class MainMenu : MonoBehaviour
 
     public void LoadMainMenu() {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    public void LoadLevelSelect() {
+        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
     }
 
 }

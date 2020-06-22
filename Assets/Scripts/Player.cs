@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
     public Text pLevelText;
 
     //Next Level Transition
-    private bool levelDone;
+    public bool levelDone;                 //when true, end animation starts, and the SaveData will take notice and update unlocked levels
     private float nextLevelTime;
     public float delayOnLevelComplete;
 
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour {
         powerLevel = 0;
         levelDone = false;
         nextLevelTime = -1f;
+
     }
 
     // Update is called once per frame
@@ -232,43 +233,10 @@ public class Player : MonoBehaviour {
     }
 
     public void LoadNextLevel() {
+
+        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
+
         string currentScene = SceneManager.GetActiveScene().name;
 
-        //Debug.Log("Current scene is: " + currentScene);
-
-        switch (currentScene) {
-
-            case "Level1":
-                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
-                break;
-            case "Level2":
-                SceneManager.LoadScene("Level3", LoadSceneMode.Single);
-                break;
-            case "Level3":
-                SceneManager.LoadScene("Level4", LoadSceneMode.Single);
-                break;
-            case "Level4":
-                SceneManager.LoadScene("Level5", LoadSceneMode.Single);
-                break;
-            case "Level5":
-                SceneManager.LoadScene("Level6", LoadSceneMode.Single);
-                break;
-            case "Level6":
-                SceneManager.LoadScene("Level7", LoadSceneMode.Single);
-                break;
-            case "Level7":
-                SceneManager.LoadScene("Level8", LoadSceneMode.Single);
-                break;
-            case "Level8":
-                SceneManager.LoadScene("Level9", LoadSceneMode.Single);
-                break;
-            case "Level9":
-                SceneManager.LoadScene("Level10", LoadSceneMode.Single);
-                break;
-            case "Level10":
-                SceneManager.LoadScene("YouWin", LoadSceneMode.Single);
-                break;
-
-        }
     }
 }
