@@ -234,7 +234,10 @@ public class Player : MonoBehaviour {
 
     public void LoadNextLevel() {
 
-        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
+        if (SceneManager.GetActiveScene().name.Equals("Level15"))
+            SceneManager.LoadScene("YouWin",LoadSceneMode.Single);
+        else
+            SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
 
         string currentScene = SceneManager.GetActiveScene().name;
 

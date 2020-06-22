@@ -30,4 +30,7 @@ public class LevelSelectMenu : MonoBehaviour {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
+    public void ToTutorial() {
+        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+    }
 }
