@@ -2804,7 +2804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SHEEP WILL ATTEMPT TO KILL YOU AND YOUR GRASS COLONY. IF THEY TOUCH YOU,
+  m_Text: SHEEP WILL ATTEMPT TO KILL YOU AND YOUR GRASS PATCHES. IF THEY TOUCH YOU,
     THE GAME IS OVER.
 --- !u!222 &980584107
 CanvasRenderer:
@@ -7047,7 +7047,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: OBTAIN A POWER LEVEL OF 2500 TO COMPLETE A LEVEL AND OVERPOWER THE SHEEP.
-    COMPLETE ALL LEVELS TO WIN.
+    COMPLETE ALL 15 LEVELS TO WIN.
 --- !u!222 &1845304383
 CanvasRenderer:
   m_ObjectHideFlags: 0

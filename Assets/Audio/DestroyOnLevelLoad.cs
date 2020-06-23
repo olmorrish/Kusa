@@ -15,10 +15,8 @@ public class DestroyOnLevelLoad : MonoBehaviour
     void Update(){
 
         for(int i=0; i<=15; i++) {
-            if (SceneManager.GetActiveScene().name.Equals("Level" + i)) {
+            if (SceneManager.GetActiveScene().name.Equals("Level" + i))
                 GameObject.Destroy(gameObject);
-        }
-
         }
 
     }
